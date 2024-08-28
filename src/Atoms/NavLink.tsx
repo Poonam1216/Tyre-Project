@@ -28,13 +28,13 @@ const NavLink: React.FC<NavLinkProps> = ({
 			</Link>
 
 			{children && (
-				<div className="w-[45vw] absolute left-0 top-full hidden group-hover:flex flex-col bg-white text-black rounded-md shadow-lg z-10">
+				<div className="md:w-[45vw] sm:w-full sm:relative md:absolute left-0 top-full hidden group-hover:flex flex-col bg-white text-black rounded-md shadow-lg z-10">
 					{children}
 				</div>
 			)}
 
 			{subChildren && (
-				<div className="absolute left-full top-0 hidden group-hover:flex flex-col bg-white text-black rounded-md shadow-lg z-20">
+				<div className="sm:absolute relative  left-full top-0 hidden group-hover:flex flex-col bg-white text-black rounded-md shadow-lg z-20">
 					{subChildren}
 				</div>
 			)}
