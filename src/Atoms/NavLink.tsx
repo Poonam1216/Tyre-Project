@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import { ChevronDown, ChevronRight } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 
 interface NavLinkProps {
 	href: string;
@@ -22,7 +22,7 @@ const NavLink: React.FC<NavLinkProps> = ({ href, label, children }) => {
 			</Link>
 
 			{children && (
-				<div className="w-[45vw] absolute left-0 top-full hidden group-hover:flex flex-col bg-white text-black rounded-md shadow-lg z-10 ">
+				<div className="w-[45vw] absolute left-0 top-full hidden group-hover:flex flex-col bg-white text-black rounded-md shadow-lg z-10">
 					{children}
 				</div>
 			)}

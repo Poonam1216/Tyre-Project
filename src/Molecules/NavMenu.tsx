@@ -57,34 +57,6 @@ const NavMenu: React.FC = () => {
 		setActiveBrand(brand);
 	};
 
-	const getBrandsForCategory = (category: keyof Categories) =>
-		categories[category].map((brand) => (
-			<div
-				key={brand.name}
-				className={`flex items-center justify-between p-2 cursor-pointer ${
-					activeBrand === brand.name
-						? "text-amber-400"
-						: "hover:text-amber-400"
-				}`}
-				onMouseEnter={() => handleBrandHover(brand.name)}
-			>
-				<span>{brand.name}</span>
-				<ChevronRight className="h-4 w-4" />
-			</div>
-		));
-
-	const getModelsForBrand = (category: keyof Categories, brand: string) =>
-		categories[category]
-			.find((b) => b.name === brand)
-			?.models.map((model) => (
-				<div key={model}>
-					<h4 className="font-bold">{model}</h4>
-					<a href="#" className="text-orange-500 hover:underline">
-						VIEW TYRES &gt;
-					</a>
-				</div>
-			));
-
 	return (
 		<nav className="flex flex-col md:flex-row text-xl justify-between w-full transition-all duration-300 ease-in-out">
 			<NavLink href="/" label="Home" />
@@ -116,17 +88,45 @@ const NavMenu: React.FC = () => {
 							</div>
 						))}
 					</div>
-
 					<div className="w-[90%] p-10">
 						<h3 className="text-lg font-bold mb-3">
 							{activeCategory || "Select a category"}
 						</h3>
 						<div className="grid grid-cols-2 gap-10">
 							{activeCategory &&
-								getBrandsForCategory(activeCategory)}
+								categories[activeCategory].map((brand) => (
+									<div
+										key={brand.name}
+										className={`flex items-center justify-between p-2 cursor-pointer ${
+											activeBrand === brand.name
+												? "text-amber-400"
+												: "hover:text-amber-400"
+										}`}
+										onMouseEnter={() =>
+											handleBrandHover(brand.name)
+										}
+									>
+										<span>{brand.name}</span>
+										<ChevronRight className="h-4 w-4" />
+									</div>
+								))}
 							{activeCategory &&
 								activeBrand &&
-								getModelsForBrand(activeCategory, activeBrand)}
+								categories[activeCategory]
+									.find((b) => b.name === activeBrand)
+									?.models.map((model) => (
+										<div key={model}>
+											<h4 className="font-bold">
+												{model}
+											</h4>
+											<a
+												href="#"
+												className="text-orange-500 hover:underline"
+											>
+												VIEW TYRES &gt;
+											</a>
+										</div>
+									))}
 						</div>
 					</div>
 				</div>
