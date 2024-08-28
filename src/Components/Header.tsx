@@ -3,10 +3,10 @@ import Logo from "@/Atoms/Logo";
 import NavMenu from "@/Molecules/NavMenu";
 import SearchBar from "@/Molecules/SearchBar";
 import React, { useState } from "react";
-import { Menu, X } from "lucide-react"; // Import icons for Hamburger and Close
+import { Menu, X } from "lucide-react";
 
 const Header: React.FC = () => {
-	const [isMenuOpen, setIsMenuOpen] = useState(false); // State for mobile menu
+	const [isMenuOpen, setIsMenuOpen] = useState(false);
 
 	const toggleMenu = () => {
 		setIsMenuOpen(!isMenuOpen);
@@ -24,32 +24,27 @@ const Header: React.FC = () => {
 					</div>
 				</div>
 
-				{/* Regular Navigation (Hidden on small screens) */}
 				<div className="hidden md:block w-[50%]">
 					<NavMenu />
 				</div>
-
-				{/* SearchBar (Hidden on small screens) */}
 				<div className="hidden md:block w-[20%] ">
 					<SearchBar />
 				</div>
 
-				{/* Hamburger Icon for small screens */}
 				<div className="md:hidden">
 					<button
 						onClick={toggleMenu}
 						className="text-gray-700 focus:outline-none"
 					>
 						{isMenuOpen ? (
-							<X className="w-8 h-8" /> // Close icon
+							<X className="w-8 h-8" />
 						) : (
-							<Menu className="w-8 h-8" /> // Hamburger icon
+							<Menu className="w-8 h-8" />
 						)}
 					</button>
 				</div>
 			</div>
 
-			{/* Mobile Navigation Menu */}
 			{isMenuOpen && (
 				<div className="absolute top-24 left-0 w-full bg-white shadow-md z-20 md:hidden">
 					<NavMenu />

@@ -1,16 +1,22 @@
 import Link from "next/link";
 import React from "react";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, ChevronRight } from "lucide-react";
 
 interface NavLinkProps {
 	href: string;
 	label: string;
 	children?: React.ReactNode;
+	subChildren?: React.ReactNode;
 }
 
-const NavLink: React.FC<NavLinkProps> = ({ href, label, children }) => {
+const NavLink: React.FC<NavLinkProps> = ({
+	href,
+	label,
+	children,
+	subChildren,
+}) => {
 	return (
-		<div className="relative group">
+		<div className="relative group cursor-pointer">
 			<Link
 				href={href}
 				className="hover:text-amber-400 transition-all duration-300 ease-in-out flex items-center"
@@ -24,6 +30,12 @@ const NavLink: React.FC<NavLinkProps> = ({ href, label, children }) => {
 			{children && (
 				<div className="w-[45vw] absolute left-0 top-full hidden group-hover:flex flex-col bg-white text-black rounded-md shadow-lg z-10">
 					{children}
+				</div>
+			)}
+
+			{subChildren && (
+				<div className="absolute left-full top-0 hidden group-hover:flex flex-col bg-white text-black rounded-md shadow-lg z-20">
+					{subChildren}
 				</div>
 			)}
 		</div>
