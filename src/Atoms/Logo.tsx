@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import React from "react";
 
 type LogoProps = {
@@ -8,17 +9,19 @@ type LogoProps = {
 
 const Logo: React.FC<LogoProps> = ({ imageSrc, altText }) => {
 	return (
-		<div className="text-lg font-bold">
-			{imageSrc ? (
-				<img
-					src={imageSrc}
-					alt={altText}
-					className="h-full w-full object-cover"
-				/>
-			) : (
-				altText
-			)}
-		</div>
+		<Link href={"/"}>
+			<div className="text-lg font-bold cursor-pointer">
+				{imageSrc ? (
+					<img
+						src={imageSrc}
+						alt={altText}
+						className="h-full w-full object-cover cursor-pointer"
+					/>
+				) : (
+					altText
+				)}
+			</div>
+		</Link>
 	);
 };
 

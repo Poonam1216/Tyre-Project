@@ -4,7 +4,7 @@ import React from "react";
 
 const NavMenu: React.FC = () => {
 	return (
-		<nav className="flex space-x-4">
+		<nav className="flex flex-col md:flex-row text-xl justify-between w-full hover:text-amber-400 transition-all duration-300 ease-in-out">
 			<NavLink href="/" label="Home" />
 			<NavLink href="/about" label="About" />
 			<NavLink href="/services" label="Services" />
